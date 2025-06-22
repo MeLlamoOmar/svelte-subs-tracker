@@ -8,5 +8,14 @@ export default defineConfig({
 		tailwindcss(),
 		sveltekit(),
 		devtoolsJson()
-	]
+	],
+	server: {
+		proxy: {
+			'/api': {
+				target: 'https://sus-tracker.onrender.com',
+				changeOrigin: true,
+				secure: false,
+			}
+		}
+	}
 });
