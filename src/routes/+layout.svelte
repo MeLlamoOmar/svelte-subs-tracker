@@ -1,7 +1,17 @@
 <script lang="ts">
-	import '../app.css';
-	
-	let { children } = $props();
-</script>
+	import '../app.css'
+	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import { Toaster } from '$lib/components/ui/sonner';
 
-{@render children()}
+	import AppSidebar from "$lib/components/app-sidebar.svelte";
+ 
+ let { children } = $props();
+</script>
+ 
+<Sidebar.Provider>
+ <AppSidebar />
+ <main>
+	<Toaster />
+  {@render children?.()}
+ </main>
+</Sidebar.Provider>
