@@ -19,7 +19,7 @@ export const actions = {
     if (response.ok) {
       // Handle successful login
       
-      redirect(303, '/');
+      redirect(303, '/subscriptions');
     } else {
       // Handle login error
       const errorData = await response.json();
