@@ -8,7 +8,7 @@
 <h1 class="text-2xl font-bold mb-4">My Subscriptions</h1>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-	{#each data.subscriptions as subscription}
+	{#each data.data as subscription}
 		<SubscriptionItem {subscription} />
 	{/each}
 </div>
