@@ -13,7 +13,7 @@
 		{#if $page.url.pathname === '/' || $page.url.pathname === '/subscriptions'}
 			<AppSidebar {data} />
 		{/if}
-		<main class="flex-1 overflow-y-auto p-8">
+		<main class="flex-1 w-full overflow-y-auto p-8">
 			<Toaster />
 			{@render children()}
 		</main>
