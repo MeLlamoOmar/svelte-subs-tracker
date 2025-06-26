@@ -3,11 +3,13 @@
 	import * as Input from "$lib/components/ui/input";
 	import * as Button from "$lib/components/ui/button";
 	import * as Label from "$lib/components/ui/label";
-	import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "$lib/components/ui/select";
+	import { Select, SelectContent, SelectItem, SelectTrigger } from "$lib/components/ui/select/index.js";
 
 	let name = $state("");
 	let price = $state(0);
 	let billingCycle = $state("monthly");
+	let currency = $state("USD");
+	// let handleChange = $derived((v) => { if (v) billingCycle = v.value as string; })
 </script>
 
 <Card.Root class="w-full max-w-md">
@@ -26,10 +28,14 @@
 				<Input.Input id="price" type="number" name="price" bind:value={price} step="0.01" required />
 			</div>
 			<div class="grid gap-2">
+				<Label.Label for="currency">Currency</Label.Label>
+				<Input.Input id="currency" type="text" name="currency" bind:value={currency} required />
+			</div>
+			<div class="grid gap-2">
 				<Label.Label for="billingCycle">Billing Cycle</Label.Label>
-				<Select selected={{ value: billingCycle, label: billingCycle }} onSelectedChange={(v) => { if (v) billingCycle = v.value as string; }} name="billingCycle">
-					<SelectTrigger class="w-full">
-						<SelectValue placeholder="Select a billing cycle" />
+				<Select name="billingCycle" type='single' bind:value={billingCycle}>
+					<SelectTrigger class="w-full bg-white">
+						{billingCycle ? billingCycle : "Select Billing Cycle"}
 					</SelectTrigger>
 					<SelectContent>
 						<SelectItem value="monthly">Monthly</SelectItem>
