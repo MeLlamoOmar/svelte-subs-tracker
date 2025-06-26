@@ -61,7 +61,7 @@
 						</AvatarFallback>
 					</Avatar>
 					<div class="flex flex-col">
-						<span class="text-sm font-medium">{data.user?.user_metadata.full_name}</span>
+						<span class="text-sm font-medium">{data.user?.name}</span>
 						<span class="text-xs text-muted-foreground">{data.user?.email}</span>
 					</div>
 					<form action="/login?/logout" method="post" class="ml-auto">

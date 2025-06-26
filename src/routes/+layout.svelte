@@ -9,7 +9,7 @@
 </script>
 
 <Sidebar.Provider>
-	<div class="flex h-screen">
+	<div class="flex h-screen w-screen">
 		{#if $page.url.pathname === '/' || $page.url.pathname === '/subscriptions'}
 			<AppSidebar {data} />
 		{/if}
