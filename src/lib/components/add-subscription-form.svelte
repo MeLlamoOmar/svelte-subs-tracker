@@ -3,13 +3,15 @@
 	import * as Input from "$lib/components/ui/input";
 	import * as Button from "$lib/components/ui/button";
 	import * as Label from "$lib/components/ui/label";
-	import { Select, SelectContent, SelectItem, SelectTrigger } from "$lib/components/ui/select/index.js";
+	import { Select, SelectContent, SelectItem, SelectTrigger } from "$lib/components/ui/select";
+
+	import { billingCycleValues } from "$lib/types";
 
 	let name = $state("");
 	let price = $state(0);
 	let billingCycle = $state("monthly");
 	let currency = $state("USD");
-	// let handleChange = $derived((v) => { if (v) billingCycle = v.value as string; })
+	
 </script>
 
 <Card.Root class="w-full max-w-md">
@@ -38,9 +40,9 @@
 						{billingCycle ? billingCycle : "Select Billing Cycle"}
 					</SelectTrigger>
 					<SelectContent>
-						<SelectItem value="monthly">Monthly</SelectItem>
-						<SelectItem value="yearly">Yearly</SelectItem>
-						<SelectItem value="weekly">Weekly</SelectItem>
+						{#each billingCycleValues as bcValues}
+							<SelectItem value={bcValues}>{bcValues}</SelectItem>
+						{/each}
 					</SelectContent>
 				</Select>
 			</div>

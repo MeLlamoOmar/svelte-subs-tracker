@@ -6,4 +6,6 @@ export type Subscription = {
   currency: string; // Optional, defaults to "USD"
 }
 
-export type billingCycle = 'monthly' | 'yearly' | 'weekly';
+export const billingCycleValues = ['weekly', 'monthly', 'yearly'] as const;
+
+export type billingCycle = (typeof billingCycleValues)[number]

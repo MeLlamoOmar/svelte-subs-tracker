@@ -2,7 +2,7 @@ import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions = {
-	default: async ({request, fetch}) => {
+	default: async ({request, fetch, cookies}) => {
     const data = await request.formData();
     
 		const email = data.get('email');
@@ -16,7 +16,7 @@ export const actions = {
       body: JSON.stringify({ email, password }),
     });
 
-    if (response.ok) {
+    if (response.ok && cookies.get('access_token')) {
       // Handle successful login
       
       redirect(303, '/subscriptions');

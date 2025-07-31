@@ -11,9 +11,12 @@
 <Sidebar.Provider>
 	<div class="flex h-screen w-screen">
 		{#if $page.url.pathname === '/' || $page.url.pathname === '/subscriptions'}
-			<AppSidebar {data} />
+			<AppSidebar {data}/>
 		{/if}
-		<main class="flex-1 w-full overflow-y-auto p-8">
+		<main class="flex-1 w-full overflow-y-auto py-4 px-4">
+			{#if $page.url.pathname != '/login' && $page.url.pathname != '/register'}
+				<Sidebar.Trigger />
+			{/if}
 			<Toaster />
 			{@render children()}
 		</main>

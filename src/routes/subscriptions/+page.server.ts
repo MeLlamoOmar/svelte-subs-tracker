@@ -1,6 +1,14 @@
 import type { billingCycle } from "$lib/types";
 import type { Actions } from "./$types";
-import { fail } from "@sveltejs/kit";
+import { fail, redirect } from "@sveltejs/kit";
+
+export const load = ({ cookies }) => {
+  const token = cookies.get('access_token');
+
+  if (!token) {
+    redirect(302, '/login');
+  }
+}
 
 export const actions: Actions = {
   addSubscription: async ({ request, fetch }) => {
